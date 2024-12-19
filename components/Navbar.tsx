@@ -4,6 +4,7 @@ import Link from "next/link";
 
 export default async function Navbar() {
   const session = await auth(); //* we get it from auth just to check if the user is logged in or not
+
   return (
     <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
       <nav className="flex justify-between items-center">

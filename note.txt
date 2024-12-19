@@ -1,0 +1,3 @@
+To install markdown we have to use separate npm package called markdown-it
+npm i markdown-it
+npm i --save-dev @types/markdown-it

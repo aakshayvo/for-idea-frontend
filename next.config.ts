@@ -10,6 +10,14 @@ const nextConfig: NextConfig = {
         hostname: "*",
       },
     ],
+  }, //partial rendering configured here PPR
+  experimental: {
+    ppr: "incremental",
+  },
+  devIndicators: {
+    appIsrStatus: true,
+    buildActivity: true,
+    buildActivityPosition: "bottom-right",
   },
 };
 
