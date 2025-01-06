@@ -54,3 +54,17 @@ export const STARTUP_VIEWS_QUERY = gql`
     }
   }
 `;
+
+export const AUTHOR_BY_GITHUB_ID_QUERY = gql`
+  query AuthorIDQuery($id: ID!) {
+    allAuthor(where: { _id: { eq: $id } }) {
+      _id
+      id
+      name
+      username
+      email
+      image
+      bio
+    }
+  }
+`;

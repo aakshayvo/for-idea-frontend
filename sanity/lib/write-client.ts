@@ -12,6 +12,6 @@ export const writeClient = createClient({
   token,
 });
 
-if (!writeClient.token) {
+if (!writeClient.config().token) {
   throw new Error("Missing SANITY_WRITE_TOKEN in environment variables");
 }

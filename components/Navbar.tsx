@@ -35,6 +35,8 @@ export default async function Navbar() {
                 "use server";
                 await signIn("github");
               }}
+              // these are the latest React 19 version for more info you can check out this "Form Actions with Server Actions"
+              // sign in and sign out are asynchronous operations
             >
               <button type="submit">
                 <span>Login</span>

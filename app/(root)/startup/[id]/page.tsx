@@ -23,6 +23,8 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
     query: GET_STARTUP_BY_ID,
     variables: { id },
   });
+  console.log(data?.allStartup);
+
   const post = data?.allStartup[0] || [];
 
   if (!post) return notFound();
@@ -49,7 +51,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
               className="flex gap-2 items-center mb-3"
             >
               <Image
-                src={post.author.image}
+                src={post.author?.image}
                 alt="avatar"
                 width={64}
                 height={64}
@@ -90,7 +92,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             </ul>
           </div>
         )} */}
-
+        {/* //ppr  if u want to make this component dynamic and rest of the page static and then wrap around suspense tag*/}
         <Suspense fallback={<Skeleton className="view_skeleton" />}>
           <View id={id} />
         </Suspense>

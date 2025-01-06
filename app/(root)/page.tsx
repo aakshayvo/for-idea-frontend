@@ -2,6 +2,7 @@ import StartupCard from "@/components/StartupCard";
 import SearchForm from "../../components/SearchForm";
 import { GET_STARTUPS } from "@/sanity/lib/quaries";
 import { getClient } from "@/lib/apollo-client";
+import { auth } from "@/auth";
 
 export default async function Home({
   searchParams,
@@ -9,8 +10,10 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-  const apolloClient = getClient();
 
+  const apolloClient = getClient();
+  const session = await auth();
+  console.log("session ", session?.id);
   // Fetch data from Apollo Client
   const { data } = await apolloClient.query({
     query: GET_STARTUPS,

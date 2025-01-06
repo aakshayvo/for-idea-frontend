@@ -1,3 +1,87 @@
+first we started the pproject by installing Auth.js
+    npm i next-auth@beta
+    npx auth secret (it will create a auth_secret inside .env.local)
+    create auth.ts and paste the code provided by auth.js
+    add a route handler inside api folder inside auth folder inside [...nextauth] inside this create route.ts file 
+    choose providers which u want to authenticate user with (here i selected github).
+    after setting up github you will geet client ID and new client secret & paste it in .env.local
+    add Github to auth.js file
+
+
+
+
 To install markdown we have to use separate npm package called markdown-it
-npm i markdown-it
-npm i --save-dev @types/markdown-it
+    npm i markdown-it
+    npm i --save-dev @types/markdown-it
+
+
+
+
+
+Sanity Query Notes 
+
+Flexibility Recap:
+    Query Name (GetStartups): You can name it anything.
+    Field Name (allStartup): Must match the type defined in your schema (startup → allStartup).
+    Fields Queried: Must match the fields defined in the schema for the startup type.
+
+by default we get it from sanity are _id,_type,_createdAt,_updatedAt,_rev,_key
+query GetStartups {
+  allStartup {
+    _id
+    _type
+    _createdAt
+    _updatedAt
+    _rev
+  }
+}
+
+How to use markdown 
+    npm install sanity-plugin-markdown
+    go to sanity.config.ts and add markdownSchema() inside plugins object
+    root Layout.tsx add this import "easymde/dist/easymde.min.css"; 
+    
+in client.ts file => if useCdn is set to true then it will revalidate the content after every 60 seconds.
+if we set the useCdn to false it will revalidate every seconds. 
+
+npm i server-only (this one i have to look, how it works with apollo client and sanity for now i didn't used it my project)
+live fetch only works directly with GROQ quaries and not with GraphQL quaries.To work on clicking refresh above method is enuough i.e 
+useCdn to make false.
+
+Understanding Paratial Pre rendering 
+
+go to next.config.ts and paste below code
+//partial rendering configured here PPR
+  experimental: {
+    ppr: "incremental",
+  },
+
+  and also additional u can add below lines of code
+
+   devIndicators: {
+    appIsrStatus: true,
+    buildActivity: true,
+    buildActivityPosition: "bottom-right",
+  },
+
+  and where u wanted to add (in which component u wanted to add there paste the below code )
+
+       export const experimental_ppr = true;
+
+How to install and use markdown-it, follow the below steps
+  npm i markdown-it
+  npm i --save-dev @types/markdown-it
+  import markdownit from "markdown-it";
+  const md = markdownit();
+  const parsedContent = md.render(post.pitch || "");
+
+
+How to Write to sanity 
+  Go to Sanity and click on API and Select Tokens
+  and click on Editir and click on Save & copy the Token 
+  and paste it in .env.local & add this code 
+    export const token = process.env.SANITY_WRITE_TOKEN;
+  
+Create a write-client file inside lib folder and paste the code 
+
+
